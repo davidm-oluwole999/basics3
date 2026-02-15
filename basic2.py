@@ -1,0 +1,60 @@
+import cv2
+import numpy as np
+
+image1= cv2.imread('OpenCV/batman.webp')
+cv2.imshow('batman', image1)
+cv2.waitKey(0)
+#print(image1)
+
+image2= cv2.imread('OpenCV/superwoman.webp')
+cv2.imshow('batman', image2)
+cv2.waitKey(0)
+#print(image2)
+
+image3= cv2.resize(image2, (270, 338))
+addition= cv2.addWeighted(image1, 0.5, image3, 0.5, 0)
+cv2.imshow('added', addition)
+cv2.waitKey(0)
+subtraction= cv2.subtract(image1, image3)
+cv2.imshow('sub', subtraction)
+cv2.waitKey(0)
+cv2.imwrite('div.png', subtraction)
+
+image2= cv2.imread('OpenCV/superwoman2.webp')
+kernel= np.ones((3,3), np.uint8)
+print(kernel)
+erosion= cv2.erode(image2, kernel)
+cv2.imshow('erode', erosion)
+cv2.imwrite('erosion1.png',erosion)
+cv2.waitKey(0)
+
+image2= cv2.imread('OpenCV/superwoman2.webp')
+kernel= np.ones((1,1), np.uint8)
+print(kernel)
+erosion= cv2.erode(image2, kernel)
+cv2.imshow('erode', erosion)
+cv2.imwrite('erosion2.png',erosion)
+cv2.waitKey(0)
+
+image2= cv2.imread('OpenCV/superwoman2.webp')
+kernel= np.ones((7,7), np.uint8)
+print(kernel)
+erosion= cv2.erode(image2, kernel)
+cv2.imshow('erode', erosion)
+cv2.imwrite('erosion3.png',erosion)
+cv2.waitKey(0)
+
+image2= cv2.imread('OpenCV/superwoman2.webp')
+gaussian=cv2.GaussianBlur(image2, (7,7), 0)
+cv2.imshow('gaussian', gaussian)
+cv2.waitKey(0)
+
+image2= cv2.imread('OpenCV/superwoman2.webp')
+median=cv2.medianBlur(image2, 5)
+cv2.imshow('median', median)
+cv2.waitKey(0)
+
+image2= cv2.imread('OpenCV/superwoman2.webp')
+bilat=cv2.bilateralFilter(image2,9,75,75)
+cv2.imshow('bilateral', bilat)
+cv2.waitKey(0)
